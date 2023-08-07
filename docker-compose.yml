@@ -7,6 +7,6 @@ services:
       context: .
       target: development
     volumes:
-      - ./app:/app
+      - ./app/financas:/app
     ports:
      - 3000:3000

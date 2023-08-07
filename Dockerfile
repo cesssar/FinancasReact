@@ -2,7 +2,11 @@ FROM node:alpine AS development
 
 ENV NODE_ENV development
 
-WORKDIR /app/financas
+WORKDIR /app
+
+COPY /app/financas/package.json .
+
+RUN npm install
 
 EXPOSE 3000
 
