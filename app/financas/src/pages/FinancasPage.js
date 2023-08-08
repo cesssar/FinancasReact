@@ -19,7 +19,7 @@ import {
   AppConversionRates,
 } from '../sections/@dashboard/app';
 
-const BaseUrl = 'http://localhost:5000';
+const BaseUrl = 'http://44.195.129.139:5000';
 
 // ----------------------------------------------------------------------
 

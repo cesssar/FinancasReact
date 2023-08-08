@@ -10,3 +10,13 @@ services:
       - ./app/financas:/app
     ports:
      - 3000:3000
+
+  app_producao:
+    container_name: app_producao
+    image: app_producao
+    build:
+      context: .
+      dockerfile: Dockerfile_producao
+      target: producao
+    ports:
+      - 3000:80
