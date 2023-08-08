@@ -1,0 +1,1 @@
+docker run --rm --volume "d:/React/FinancasReact/app:/app" --workdir "/app" --publish 3000:3000 -it node:alpine sh

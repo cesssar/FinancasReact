@@ -33,7 +33,7 @@ export default function FinacasPage() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Conta Corrente" total={1650.55} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Conta Corrente" total={1650.55} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
