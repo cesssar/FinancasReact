@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
 // @mui
@@ -18,10 +19,32 @@ import {
   AppConversionRates,
 } from '../sections/@dashboard/app';
 
+const BaseUrl = 'http://localhost:5000';
+
 // ----------------------------------------------------------------------
 
-export default function FinacasPage() {
+function GetSaldo(url){
+  const [saldo, setSaldo] = useState([]);
+   useEffect(() => {
+      fetch(BaseUrl + url)
+         .then((response) => response.json())
+         .then((data) => {
+            setSaldo(data);
+         })
+         .catch((err) => {
+            console.log(err.message);
+         });
+   }, []);
+   return (
+    saldo.saldo
+   )
+}
+
+// ----------------------------------------------------------------------
+
+export default function FinancasPage() {
   const theme = useTheme();
+
 
   return (
     <>
@@ -33,19 +56,19 @@ export default function FinacasPage() {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Conta Corrente" total={1650.55} />
+            <AppWidgetSummary title="Conta Corrente" total={GetSaldo('/saldos/contacorrente')} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Faturas Crédito" total={1750} color="info" icon={'ant-design:creditcard-filled'} />
+            <AppWidgetSummary title="Faturas Crédito" total={GetSaldo('/saldos/faturascredito')} color="info"/>
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Limite disponível" total={15450} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary title="Limite disponível" total={GetSaldo('/saldos/limitecredito')} color="warning" icon={'ant-design:windows-filled'} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Limite alimentação" total={150} color="info" icon={'ant-design:bug-filled'} />
+            <AppWidgetSummary title="Limite alimentação" total={GetSaldo('/saldos/limitealimentacao')} color="info" icon={'ant-design:bug-filled'} />
           </Grid>
 
           <Grid item xs={12} md={6} lg={12}>
