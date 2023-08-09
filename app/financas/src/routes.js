@@ -10,6 +10,7 @@ import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import FinancasPage from './pages/FinancasPage';
+import LancamentosPage from './pages/LancamentosPage';
 
 // ----------------------------------------------------------------------
 
@@ -20,6 +21,7 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/financas" />, index: true },
+        { path: 'lancamentos', element: <LancamentosPage /> },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },

@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
-// components
-import Iconify from '../components/iconify';
 // sections
 import {
   AppTasks,
@@ -18,33 +15,11 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
-
-const BaseUrl = 'http://44.195.129.139:5000';
-
-// ----------------------------------------------------------------------
-
-function GetSaldo(url){
-  const [saldo, setSaldo] = useState([]);
-   useEffect(() => {
-      fetch(BaseUrl + url)
-         .then((response) => response.json())
-         .then((data) => {
-            setSaldo(data);
-         })
-         .catch((err) => {
-            console.log(err.message);
-         });
-   }, []);
-   return (
-    saldo.saldo
-   )
-}
-
-// ----------------------------------------------------------------------
+// api
+import GetSaldo from '../data/services/saldos';
 
 export default function FinancasPage() {
   const theme = useTheme();
-
 
   return (
     <>
