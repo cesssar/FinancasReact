@@ -5,15 +5,10 @@ import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 // sections
 import {
-  AppTasks,
-  AppNewsUpdate,
   AppOrderTimeline,
-  AppCurrentVisits,
   AppWebsiteVisits,
-  AppTrafficBySite,
   AppWidgetSummary,
-  AppCurrentSubject,
-  AppConversionRates,
+  AppLancamento,
 } from '../sections/@dashboard/app';
 // api
 import GetSaldo from '../data/services/saldos';
@@ -44,6 +39,28 @@ export default function FinancasPage() {
 
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Limite alimentação" total={GetSaldo('/saldos/limitealimentacao')} color="info" icon={'ant-design:bug-filled'} />
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={7}>
+            <AppLancamento title='Novo Lançamento' subheader='' />
+          </Grid>
+
+          <Grid item xs={12} md={6} lg={5}>
+            <AppOrderTimeline
+              title="Últimos lançamentos"
+              list={[...Array(5)].map((_, index) => ({
+                id: faker.datatype.uuid(),
+                title: [
+                  '1983, orders, $4220',
+                  '12 Invoices have been paid',
+                  'Order #37745 from September',
+                  'New order placed #XF-2356',
+                  'New order placed #XF-2346',
+                ][index],
+                type: `order${index + 1}`,
+                time: faker.date.past(),
+              }))}
+            />
           </Grid>
 
           <Grid item xs={12} md={6} lg={12}>
@@ -83,24 +100,6 @@ export default function FinancasPage() {
                   data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39],
                 },
               ]}
-            />
-          </Grid>
-
-          <Grid item xs={12} md={6} lg={12}>
-            <AppOrderTimeline
-              title="Últimos lançamentos"
-              list={[...Array(5)].map((_, index) => ({
-                id: faker.datatype.uuid(),
-                title: [
-                  '1983, orders, $4220',
-                  '12 Invoices have been paid',
-                  'Order #37745 from September',
-                  'New order placed #XF-2356',
-                  'New order placed #XF-2346',
-                ][index],
-                type: `order${index + 1}`,
-                time: faker.date.past(),
-              }))}
             />
           </Grid>
 

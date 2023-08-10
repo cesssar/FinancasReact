@@ -1,1 +1,1 @@
-docker run --rm --volume "d:/React/FinancasReact/app:/app" --workdir "/app" --publish 3000:3000 -it node:alpine sh
+docker run --rm --volume "d:/React/FinancasReact/app:/app" --env REACT_APP_URL_API=http://44.195.129.139:5000 --workdir "/app" --publish 3000:3000 -it node:alpine sh
